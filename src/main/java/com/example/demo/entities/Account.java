@@ -1,5 +1,8 @@
 package com.example.demo.entities;
 
+import java.math.BigDecimal;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -30,4 +33,7 @@ public class Account extends Model{
 
 	@NotNull
 	private String documentNumber;
+
+	@NotNull
+	private BigDecimal availableCreditLimit = BigDecimal.valueOf( 100 );
 }

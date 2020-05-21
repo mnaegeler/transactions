@@ -9,7 +9,6 @@ import org.springframework.stereotype.Service;
 import com.example.demo.dtos.TransactionRequestBodyDTO;
 import com.example.demo.entities.OperationTypes;
 import com.example.demo.entities.Transaction;
-import com.example.demo.exceptions.NotFoundException;
 import com.example.demo.repositories.TransactionRepository;
 
 @Service
@@ -24,11 +23,14 @@ public class TransactionService {
 	public Transaction save(TransactionRequestBodyDTO body) {
 		OperationTypes operation = OperationTypes.getByValue( body.getOperationTypeId() );
 		Transaction transaction = Transaction.builder()
-				.account( accountService.find( body.getAccountId() ).orElseThrow( NotFoundException::new ) )
 				.operation( operation )
 				.amount( validateAmountByOperation(operation, body.getAmount()) )
 				.eventDate( new Date(  ) )
 				.build();
+
+		transaction.setAccount(
+				accountService.updateCreditLimitByTransaction( body.getAccountId(), body.getAmount(), transaction.getOperation() ) );
+
 		return repository.save( transaction );
 	}
 

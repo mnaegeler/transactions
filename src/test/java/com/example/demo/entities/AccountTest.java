@@ -2,6 +2,8 @@ package com.example.demo.entities;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
+import java.math.BigDecimal;
+
 import org.junit.Test;
 
 public class AccountTest {
@@ -25,10 +27,11 @@ public class AccountTest {
 				Account.builder()
 						.id(ID)
 						.documentNumber(documentNumber)
+						.availableCreditLimit( BigDecimal.TEN )
 						.build();
 
 		assertThat(account)
-				.extracting("id", "documentNumber")
-				.containsExactly(ID, documentNumber);
+				.extracting("id", "documentNumber", "availableCreditLimit")
+				.containsExactly(ID, documentNumber, BigDecimal.TEN);
 	}
 }
