@@ -23,3 +23,5 @@
 4. Para teste dos endpoints, utilizar a url do swagger:
 `http://localhost:8080/swagger-ui.html`
  
+## Rodar o projeto usando docker-compose
+`docker-compose up`
