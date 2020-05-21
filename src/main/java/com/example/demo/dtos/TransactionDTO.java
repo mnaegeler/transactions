@@ -5,6 +5,7 @@ import java.util.Date;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 import com.example.demo.entities.Account;
 import com.example.demo.entities.OperationTypes;
@@ -12,10 +13,11 @@ import com.example.demo.entities.Transaction;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class TransactionDTO {
 
-	private final String id;
-	private final Account account;
+	private String id;
+	private Account account;
 	private OperationTypes operation;
 	private BigDecimal amount;
 	private Date eventDate;

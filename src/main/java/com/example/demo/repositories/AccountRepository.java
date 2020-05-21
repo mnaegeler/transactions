@@ -8,6 +8,6 @@ import com.example.demo.entities.Account;
 public interface AccountRepository extends CrudRepository<Account, Long> {
 
 	@Query(
-			"select (count(s) > 0) from Account a where a.documentNumber = :documentNumber")
+			"select (count(a) > 0) from Account a where a.documentNumber = :documentNumber")
 	boolean alreadyExists(String documentNumber);
 }
