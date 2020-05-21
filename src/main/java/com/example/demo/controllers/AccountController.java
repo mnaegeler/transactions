@@ -24,8 +24,8 @@ public class AccountController {
 	private AccountService service;
 
 	@PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
-	public AccountDTO create(@Valid @RequestBody AccountDTO accountDTO) {
-		return new AccountDTO( service.save( accountDTO.toEntity() ) );
+	public AccountDTO create(@Valid @RequestBody String documentNumber) {
+		return new AccountDTO( service.save( AccountDTO.builder().documentNumber( documentNumber ).build().toEntity() ) );
 	}
 
 	@GetMapping(value = "/{id}")

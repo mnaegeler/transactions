@@ -4,12 +4,14 @@ import java.math.BigDecimal;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 
 @Getter
 @AllArgsConstructor
+@NoArgsConstructor
 public class TransactionRequestBodyDTO {
 
-	private final Long accountId;
-	private final int operationTypeId;
-	private final BigDecimal amount;
+	private Long accountId;
+	private int operationTypeId;
+	private BigDecimal amount;
 }
