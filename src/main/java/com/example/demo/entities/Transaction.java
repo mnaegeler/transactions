@@ -18,6 +18,7 @@ import lombok.Builder;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 import org.hibernate.annotations.GenericGenerator;
 
@@ -26,6 +27,7 @@ import com.sun.istack.NotNull;
 @Entity
 @Table(name = "transaction")
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor

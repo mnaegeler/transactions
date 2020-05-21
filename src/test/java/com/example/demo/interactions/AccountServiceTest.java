@@ -6,6 +6,7 @@ import static org.mockito.BDDMockito.given;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
 
+import java.math.BigDecimal;
 import java.util.Optional;
 
 import org.junit.Test;
@@ -24,6 +25,7 @@ public class AccountServiceTest {
 
 	private static final String DOCUMENT = "123.456.789-00";
 	private static final Long ID = 10L;
+	private static final BigDecimal CREDIT_LIMIT = BigDecimal.TEN;
 	private static final Account ACCOUNT = Account.builder().id( ID ).documentNumber( DOCUMENT ).build();
 
 	@InjectMocks
@@ -55,7 +57,7 @@ public class AccountServiceTest {
 	@Test
 	public void update() {
 		Account accountEdited = Account.builder().documentNumber( "789.456.123-00").build();
-		given(repository.findById( ID ) ).willReturn( Optional.of( new Account( ID, DOCUMENT ) ) );
+		given(repository.findById( ID ) ).willReturn( Optional.of( new Account( ID, DOCUMENT, CREDIT_LIMIT ) ) );
 
 		service.update( ID, accountEdited );
 
